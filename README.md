@@ -1,5 +1,5 @@
 
-## tidyimport  <img src="man/figures/hexagon_blue_tidyimpute_v1.0.png"  height="120px" align="right">
+## tidyimport  <img src="man/figures/hexagon_blue_tidyimpute_v1.0.png"  width="120px" align="right">
 
 **Comprehensive Library For Handling Missing Values** 
 
