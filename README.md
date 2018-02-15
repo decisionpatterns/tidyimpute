@@ -8,7 +8,7 @@
 [![Downloads](http://cranlogs.r-pkg.org/badges/tidyimport?color=brightgreen)](http://www.r-pkg.org/pkg/tidyimport)
 
 
-**tidyimport** is tidtverse/dplyr compliant toolkit for imputing missing 
+**tidyimpute** is tidtverse/dplyr compliant toolkit for imputing missing 
 values (NA) values in list-like and table-like structures including data.tables.
 It had two goals: 1) extend existing `na.*` functions from the stats packages 
 and 2) provide **dplyr**/**tidyverse** compliant methods for tables and lists. 
