@@ -3,11 +3,14 @@
 \name{drop_cols_all_na}
 \alias{drop_cols_all_na}
 \alias{drop_cols_any_na}
-\title{drop_cols_all_na, drop_cols_any_na}
+\alias{drop_na_cols}
+\title{Remove columns with missing values}
 \usage{
 drop_cols_all_na(.tbl)
 
 drop_cols_any_na(.tbl)
+
+drop_na_cols(.tbl)
 }
 \arguments{
 \item{.tbl}{table-like object}
@@ -17,10 +20,11 @@ An object of the same class as \code{data} with cols containing all
 \code{NA} values removed
 }
 \description{
-Drop cols of a table whose values are all \code{NA} or who have any \code{NA}
+Remove columns of a table whose values are all \code{NA} or who have any \code{NA}
 }
 \details{
-\code{drop_cols_all_na} removes all cols whose only values are \code{NA}. It works on all
+\code{drop_cols_all_na} removes all cols whose only values are \code{NA}.
+\code{drop_cols_any_na} removes columns that have any \code{NA}. They work on all
 table-like objects.
 }
 \seealso{

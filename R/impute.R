@@ -2,16 +2,18 @@
 #' 
 #' Replace missing values (`NA`) in a table and lists
 #' 
-#' @param .data list-like or table-like structure.
+#' @param .tbl list-like or table-like structure.
 #' @param .na scalar, vector or function as described in [na.tools::na.replace()]
+#' @param .vars character; names of columns to be imputed
+#' @param .predicate dply-type predicate functions
 #' @param ... additional args; either a unnamed list of columns (quoted or not)
 #'        or name=function pairs.  See Details.
 #'
 #' @details
 #' 
 #' `impute` is similar to other *dplyr* verbs especially [dplyr::mutate()]. Like
-#' [dplyr::mutate()] it operates on columns, but changes only those values that
-#' are missing (`NA`). 
+#' [dplyr::mutate()] it operates on columns. It changes only missing values 
+#' (`NA`) to the value specified by `.na`. 
 #'
 #' **Behavior**:
 #' 
@@ -19,15 +21,15 @@
 #' 
 #' `impute` can be used for three replacement operatations: 
 #'  
-#'  1. `impute( .data, .na )` : ( missing `...` ) Replace missing values 
+#'  1. `impute( .tbl, .na )` : ( missing `...` ) Replace missing values 
 #'      in **ALL COLS** by `.na`.  This is analogous to `impute_all`.
 #'      
-#'  2. `impute( .data, .na, ... )` : ( `...` is an unnamed list) Replace 
+#'  2. `impute( .tbl, .na, ... )` : ( `...` is an unnamed list) Replace 
 #'      column(s) specified in `...` by `.na`.  Columns are specified as an 
 #'      unnamed list of quoted or unquoted column names. This is analogous to 
 #'      `impute_at` where `...` specifies `.vars`
 #'      
-#'  3. `impute( .data. col1=na.*, col2=na.* )` : ( missing `.na` ) : 
+#'  3. `impute( .tbl. col1=na.*, col2=na.* )` : ( missing `.na` ) : 
 #'     Replace by column-specific `.na` 
 #'  
 #' Additional arguments are to `.na` are not used; Use `impute_at` for 
@@ -35,12 +37,18 @@
 #' 
 #' @return 
 #' 
-#' Returns a object as the same type as `.data`. Columns are mutated to replace
+#' Returns a object as the same type as `.tbl`. Columns are mutated to replace
 #' missing values (`NA`) with value specied by `.na` and `...`
 #' 
+#' @seealso
+#'  * The **na.tools** package.
+#'  * `impute_functions`
+#'  
 #' @examples
 #' 
 #'   data(nacars)
+#'   
+#'   \dontrun{
 #'   nacars %>% impute(0, mpg, cyl)
 #'   nacars %>% impute(1:6, mpg, cyl)
 #'
@@ -50,30 +58,34 @@
 #'   nacars %>% impute( mean, mpg, disp )
 #'   nacars %>% impute( mpg=na.mean, cyl=na.max )
 #'   nacars %>% impute( na.mean, c('mpg','disp') )
-#'   
+#'   }
 #' @md
 #' @import dplyr na.tools
 #' @export
 
 
-impute <- function (.data, .na, ...)
+impute <- function (.tbl, .na, ...)
 {
   
+  if( ! is.list(.tbl) & ! is.data.frame(.tbl) ) 
+    stop( "`impute` only works on lists and table")
+    
+    
   # if( missing(.na) && missing(...) )
   #  stop( "At least one of .na or ... must be provided.")
   
   # USAGE 1: missing(...) all columns mutated by .na
   if ( missing(...) ) { 
-    for( j in 1:length(.data) )
-      .data[[j]] <- na.replace( .data[[j]], .na )
-    return( .data )
+    for( j in 1:length(.tbl) )
+      .tbl[[j]] <- na.replace( .tbl[[j]], .na )
+    return( .tbl )
   }
     
   
   # vars: key-value list ...
   
   # TEST whether unknown columns were specified   
-  unknown <- setdiff( names(vars), names(.data) )
+  unknown <- setdiff( names(vars), names(.tbl) )
   if( length(unknown) > 0 )
     stop( paste( "Unknown columns:", paste(unknown, collapse=", ")))
   
@@ -81,19 +93,19 @@ impute <- function (.data, .na, ...)
   # USAGE 2: ... is column names
   # IF names were provided as part of columns list, we take
   if( ! missing(.na) && is_unnamed.quosure( quos(...) ) ) { 
-    vars <- select_vars( names(.data), ... )  
+    vars <- select_vars( names(.tbl), ... )  
     for( j in vars )
-      .data[[j]] <- na.replace( .data[[j]], .na ) 
-    return(.data)
+      .tbl[[j]] <- na.replace( .tbl[[j]], .na ) 
+    return(.tbl)
   }   
   
   # USAGE 3: ... is col=na.fun pairs
   if( missing(.na) && is_named( quos(...)) ) {
     for ( . in kv( quos(...) ) )  {   
       .na = rlang::eval_tidy( .$v )
-      .data[[.$k ]] <- na.replace( .data[[.$k]], .na=.na )
+      .tbl[[.$k ]] <- na.replace( .tbl[[.$k]], .na=.na )
     }
-    return(.data)
+    return(.tbl)
   } 
   
   if( ! missing(.na) && is_named( quos )) 
@@ -156,7 +168,7 @@ impute_if <- function( .tbl, .na, .predicate, ... ) {
 
   for( i in 1:length(.tbl) ) 
     if( .predicate(.tbl[[i]] ) ) 
-      .tbl[[i]] <- na.replace( .tbl[[i]], .na=.na, .predicate=.predicate, ...  )
+      .tbl[[i]] <- na.replace( .tbl[[i]], .na=.na,  ...  )
     
   .tbl
 }

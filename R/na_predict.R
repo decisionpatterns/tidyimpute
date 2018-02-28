@@ -12,6 +12,5 @@ na_predict <- function( x, object, data=x ) {
 
   if( length(x)  != nrow(data) ) stop()
   
-
   return(x)
 } 

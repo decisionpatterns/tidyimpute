@@ -1,5 +1,5 @@
 Package: tidyimpute
-Title: Imputation the Tidy Way
+Title: Imputation the Tidyverse Way
 Version: 0.1.0
 Date: 2018-02-01
 Authors@R: c(
@@ -9,7 +9,8 @@ Authors@R: c(
 URL: https://github.com/decisionpatterns/tidyimpute
 Description:
     Functions and methods for imputing missing values (NA) in tables and list 
-    patterned after the approach of 'dplyr' and 'rlang'. 
+    patterned after the tidyverse approach of 'dplyr' and 'rlang'; works with 
+    data.tables as well.
 BugReports: https://github.com/decisionpatterns/tidyimpute/issues
 Depends:
     R (>= 3.1.0)
@@ -19,7 +20,9 @@ Imports:
     na.tools (>= 0.1.0)
 Suggests:
     testthat (>= 1.0.2),
-    data.table (>= 1.10)
+    data.table (>= 1.10),
+    knitr,
+    rmarkdown
 License: GPL-3 | file LICENSE
 LazyData: true
 RoxygenNote: 6.0.1.9000
@@ -27,6 +30,7 @@ Roxygen: list(markdown = TRUE)
 Repository: CRAN 
 Encoding: UTF-8
 Collate: 
+    'data.R'
     'drop_cols.R'
     'drop_rows.R'
     'impute.R'
@@ -35,3 +39,4 @@ Collate:
     'impute_funs.R'
     'na_predict.R'
     'zzz.R'
+VignetteBuilder: knitr

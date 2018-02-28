@@ -1,5 +1,7 @@
 ## TODO ##
 
+ - [ ] Support autobake
+ 
  - [ ] Should impute_max / impute_min should not return -Inf and +Inf for all 
        NA rows or be consistent with na.mean and na.median  
        
@@ -17,6 +19,20 @@
  - [ ] There is a generalized imputation that uses both rows and columns and
    might automatically consider by-groups (how does the values of )
  
+ - [x] Is recall a part of 
+   - na.tools::na.replace only deals with vectors and references to multivariate 
+     replacement might be misplaced.
+   - [x] tidyimpute::impute deals with tables and therefore is the pro
+ - How to implement recall?
+   - Recall should be able to take the same object. Identify the input. 
+     A recollection should:
+     - test for the form of the input, 
+     - apply one or more 
+     - recall:
+       - test for input: digest(.tbl[0,])
+       - a functions with arguments modified except the input.  
+         impute( . , .na, ... )
+       
  
 ### `coerce_safe`
 

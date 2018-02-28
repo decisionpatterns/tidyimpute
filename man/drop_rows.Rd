@@ -2,12 +2,18 @@
 % Please edit documentation in R/drop_rows.R
 \name{drop_rows_all_na}
 \alias{drop_rows_all_na}
+\alias{filter_all_na}
 \alias{drop_rows_any_na}
+\alias{filter_any_na}
 \title{drop_rows_all_na, drop_rows_any_na}
 \usage{
 drop_rows_all_na(.tbl)
 
+filter_all_na(.tbl)
+
 drop_rows_any_na(.tbl)
+
+filter_any_na(.tbl)
 }
 \arguments{
 \item{.tbl}{data-like object}
@@ -28,9 +34,19 @@ table-like objects.
   data(iris)
   
   .tbl <- iris[1:5,]
-  .tbl[1:3,] <- NA
+  .tbl[1:2,] <- NA
+  .tbl[3,1] <- NA
   .tbl
   
-  na_drop_rows(.tbl) 
-
+  filter_all_na(.tbl) 
+  filter_any_na(.tbl)
+  
+  drop_rows_all_na(.tbl)
+  drop_rows_any_na(.tbl)
+  
+}
+\seealso{
+\itemize{
+\item \code{\link[dplyr:filter]{dplyr::filter()}}
+}
 }

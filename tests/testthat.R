@@ -1,4 +1,4 @@
 library(testthat)
-library(na.actions)
+library(tidyimpute)
 
-test_check("na.actions")
+test_check("tidyimpute")

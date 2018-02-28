@@ -2,7 +2,7 @@
 #' 
 #' Create functions that use a function for imputing
 #' 
-#' @param .na value or function used for imputing. See Details.
+#' @param fun value or function used for imputing. See Details.
 #' 
 #' @details 
 #' 
@@ -12,22 +12,25 @@
 #' `make_imputes` is a wrapper around the other functions and returns each as 
 #' a list.
 #' 
-#' @keyword internal 
+#' @keywords internal 
 #' @rdname make_impute
 
-make_impute <- function(.na) function(.tbl, ...) impute(.tbl, .na=.na, ... )  
+make_impute <- function(fun) function(.tbl, ..., .na=fun )  
+  impute(.tbl, .na=.na, ... )  
 
-#' @rdname make_impute
-#' @export 
-make_impute_at <- function(.na) function( .tbl, .vars, ...) impute_at( .tbl, .na=.na, .vars )
 
 #' @rdname make_impute
 #' @export 
-make_impute_all <- function(.na) function( .tbl, ... ) impute_all( .tbl, .na=.na, ...  )
+make_impute_at <- function(fun) function( .tbl, .vars, ..., .na=fun ) impute_at( .tbl, .na=.na, .vars )
+
 
 #' @rdname make_impute
 #' @export 
-make_impute_if <- function(.na) function( .tbl, .predicate, ... ) impute_if( .tbl, .na=.na, .predicate, ...  )
+make_impute_all <- function(fun) function( .tbl, .na=fun, ... ) impute_all( .tbl, .na=.na, ...  )
+
+#' @rdname make_impute
+#' @export 
+make_impute_if <- function(fun) function( .tbl, .predicate, ... ) impute_if( .tbl, .na=fun, .predicate, ...  )
 
 
 #' @rdname make_impute

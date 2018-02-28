@@ -8,18 +8,18 @@
 \alias{make_imputes}
 \title{Imputation metaprogramming}
 \usage{
-make_impute(.na)
+make_impute(fun)
 
-make_impute_at(.na)
+make_impute_at(fun)
 
-make_impute_all(.na)
+make_impute_all(fun)
 
-make_impute_if(.na)
+make_impute_if(fun)
 
 make_imputes(.na)
 }
 \arguments{
-\item{.na}{value or function used for imputing. See Details.}
+\item{fun}{value or function used for imputing. See Details.}
 }
 \description{
 Create functions that use a function for imputing
@@ -31,3 +31,4 @@ supplied \code{.na} argument.
 \code{make_imputes} is a wrapper around the other functions and returns each as
 a list.
 }
+\keyword{internal}

@@ -7,18 +7,7 @@
 \alias{impute_if}
 \title{Replace missing values in tables and lists}
 \usage{
-`impute` can be used for three replacement operatations: 
- 
- 1. `impute( .data, .na )` : ( missing `...` ) Replace missing values 
-     in **ALL COLS** by `.na`
- 2. `impute( .data, .na, ... )` : ( `...` is an unnamed list) Replace 
-     column(s) specified in `...` by `.na`.  Columns are specified as an 
-     unnamed list of quoted or unquoted column names.
- 3. `impute( .data. col1=na.*, col2=na.* )` : ( missing `.na` ) : 
-    Replace by column-specific `.na` 
- 
-Use Additional arguments are to `.na` are not used; Use impute_at for 
-or create your own lambda functions.
+impute(.tbl, .na, ...)
 
 impute_at(.tbl, .na, .vars, ...)
 
@@ -27,26 +16,47 @@ impute_all(.tbl, .na, ...)
 impute_if(.tbl, .na, .predicate, ...)
 }
 \arguments{
-\item{.data}{list-like or table-like structure.}
+\item{.tbl}{list-like or table-like structure.}
 
 \item{.na}{scalar, vector or function as described in \code{\link[na.tools:na.replace]{na.tools::na.replace()}}}
 
 \item{...}{additional args; either a unnamed list of columns (quoted or not)
 or name=function pairs.  See Details.}
+
+\item{.vars}{character; names of columns to be imputed}
+
+\item{.predicate}{dply-type predicate functions}
 }
 \value{
-Returns a object as the same type as \code{.data}. Columns are mutated to replace
+Returns a object as the same type as \code{.tbl}. Columns are mutated to replace
 missing values (\code{NA}) with value specied by \code{.na} and \code{...}
 }
 \description{
 Replace missing values (\code{NA}) in a table and lists
 }
 \details{
-\code{impute} is similar to other \emph{dplyr} verbs especially \code{\link[dplyr:mutate]{dplyr::mutate()}}
-except it always operates on a subset of vector elements, i.e. those with \code{NA}
-values.
+\code{impute} is similar to other \emph{dplyr} verbs especially \code{\link[dplyr:mutate]{dplyr::mutate()}}. Like
+\code{\link[dplyr:mutate]{dplyr::mutate()}} it operates on columns. It changes only missing values
+(\code{NA}) to the value specified by \code{.na}.
 
-The behavior depends on the values of \code{.na} and \code{...}. (See Usage.)
+\strong{Behavior}:
+
+Behavior depends on the values of \code{.na} and \code{...}.
+
+\code{impute} can be used for three replacement operatations:
+\enumerate{
+\item \code{impute( .tbl, .na )} : ( missing \code{...} ) Replace missing values
+in \strong{ALL COLS} by \code{.na}.  This is analogous to \code{impute_all}.
+\item \code{impute( .tbl, .na, ... )} : ( \code{...} is an unnamed list) Replace
+column(s) specified in \code{...} by \code{.na}.  Columns are specified as an
+unnamed list of quoted or unquoted column names. This is analogous to
+\code{impute_at} where \code{...} specifies \code{.vars}
+\item \code{impute( .tbl. col1=na.*, col2=na.* )} : ( missing \code{.na} ) :
+Replace by column-specific \code{.na}
+}
+
+Additional arguments are to \code{.na} are not used; Use \code{impute_at} for
+this or create your own lambda functions.
 
 \code{impute_all} is like \code{impute} without specifying \code{...}. \code{...} is used
 for additional arguments to \code{.na}
@@ -58,6 +68,8 @@ arguments to \code{.na} in the other \code{impute_*} functions.
 \examples{
 
   data(nacars)
+  
+  \dontrun{
   nacars \%>\% impute(0, mpg, cyl)
   nacars \%>\% impute(1:6, mpg, cyl)
 
@@ -67,7 +79,7 @@ arguments to \code{.na} in the other \code{impute_*} functions.
   nacars \%>\% impute( mean, mpg, disp )
   nacars \%>\% impute( mpg=na.mean, cyl=na.max )
   nacars \%>\% impute( na.mean, c('mpg','disp') )
-  
+  }
 
   nacars \%>\% impute_at( -99, .vars=1:3 )
   nacars \%>\% impute_at( .na=na.mean, .vars=1:6 )
@@ -79,4 +91,10 @@ arguments to \code{.na} in the other \code{impute_*} functions.
   nacars \%>\% impute_all( -99 )
   nacars \%>\% impute_all( na.min )
   
+}
+\seealso{
+\itemize{
+\item The \strong{na.tools} package.
+\item \code{impute_functions}
+}
 }

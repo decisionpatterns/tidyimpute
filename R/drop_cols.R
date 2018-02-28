@@ -1,11 +1,12 @@
-#' drop_cols_all_na, drop_cols_any_na
+#' @title Remove columns with missing values 
 #' 
-#' Drop cols of a table whose values are all `NA` or who have any `NA`
+#' @description Remove columns of a table whose values are all `NA` or who have any `NA`
 #' 
 #' @param .tbl table-like object
 #' 
 #' @details
-#' `drop_cols_all_na` removes all cols whose only values are `NA`. It works on all 
+#' `drop_cols_all_na` removes all cols whose only values are `NA`. 
+#' `drop_cols_any_na` removes columns that have any `NA`. They work on all 
 #' table-like objects.
 #' 
 #' @return 
@@ -20,18 +21,18 @@
 #' @export
 
 drop_cols_all_na <- function(.tbl) 
-  .tbl[ , ! apply( .tbl, 2, na.all ) ]
+  .tbl[ , ! apply( .tbl, 2, all.na ) ]
 
 
 #' @rdname drop_cols
 #' @export
 
 drop_cols_any_na <- function(.tbl) 
-  .tbl[ , ! apply( .tbl, 2, na.any ) ]
+  .tbl[ , ! apply( .tbl, 2, any.na ) ]
 
 
 
-#' @rdname drop_cols_all_na 
+#' @rdname drop_cols
 #' @export 
 
 drop_na_cols <- drop_cols_all_na
