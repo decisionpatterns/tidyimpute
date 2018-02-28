@@ -8,10 +8,10 @@
 [![Downloads](http://cranlogs.r-pkg.org/badges/tidyimport?color=brightgreen)](http://www.r-pkg.org/pkg/tidyimport)
 
 
-**tidyimport** is tidtverse/dplyr compliant toolkit for imputing missing 
-values (NA) values in list-like and table-like structures.
-It had two goals: 1) Provide a unified, consistent interface for imputation
-2) provide **dplyr**/**tidyverse** compliant methods for tables and lists. 
+**tidyimpute** is tidtverse/dplyr compliant toolkit for imputing missing 
+values (NA) values in list-like and table-like structures including data.tables.
+It had two goals: 1) extend existing `na.*` functions from the stats packages 
+and 2) provide **dplyr**/**tidyverse** compliant methods for tables and lists. 
 
 This package is based on the handy **na.tools** package which provides tools 
 for working with missing values in vectors.
