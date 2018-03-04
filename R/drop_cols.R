@@ -17,18 +17,19 @@
 #'  * [dplyr::select()]
 #'  
 #' @md
+#' @import na.tools
 #' @rdname drop_cols
 #' @export
 
 drop_cols_all_na <- function(.tbl) 
-  .tbl[ , ! apply( .tbl, 2, all.na ) ]
+  .tbl[ , ! apply( .tbl, 2, all_na ) ]
 
 
 #' @rdname drop_cols
 #' @export
 
 drop_cols_any_na <- function(.tbl) 
-  .tbl[ , ! apply( .tbl, 2, any.na ) ]
+  .tbl[ , ! apply( .tbl, 2, any_na ) ]
 
 
 

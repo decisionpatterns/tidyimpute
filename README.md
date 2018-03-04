@@ -1,7 +1,7 @@
 
 ## tidyimport  <img src="man/figures/hexagon_blue_tidyimpute_v1.0.png"  width="120px" align="right">
 
-**Comprehensive Library For Handling Missing Values** 
+**Impute the tidyverse way** 
 
 [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%203%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![CRAN](http://www.r-pkg.org/badges/version/tidyimport)](https://cran.rstudio.com/web/packages/tidyimport/index.html)

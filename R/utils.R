@@ -69,11 +69,12 @@ qw <- function (...)
 
 # @author decision patterns / christopher brown
 # Taken from the dimensional package with permission  
-most_freq <- function (x, na.action = na.pass) 
+
+most_freq <- function (x, na.action = stats::na.pass) 
   as(names(which.max(table(na.action(x), useNA = "always"))), class(x))
 
 
-# Returns TRUE if 
+# Returns TRUE if the quosures are 
 is_named <-function(x) ! is.null( attr(x, "names") ) 
 is_unnamed <- function(x) is.null( attr(x, "names") )
 is_named.quosure <- function(x) length( setdiff( names(x), "" ) ) == length(x)

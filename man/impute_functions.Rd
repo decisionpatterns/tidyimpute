@@ -6,6 +6,58 @@
 \alias{impute_explicit_at}
 \alias{impute_explicit_all}
 \alias{impute_explicit_if}
+\alias{impute_zero}
+\alias{impute_zero_at}
+\alias{impute_zero_all}
+\alias{impute_zero_if}
+\alias{impute_inf}
+\alias{impute_inf_at}
+\alias{impute_inf_all}
+\alias{impute_inf_if}
+\alias{impute_neginf}
+\alias{impute_neginf_at}
+\alias{impute_neginf_all}
+\alias{impute_neginf_if}
+\alias{impute_constant}
+\alias{impute_constant_at}
+\alias{impute_constant_all}
+\alias{impute_constant_if}
+\alias{impute_max}
+\alias{impute_max_at}
+\alias{impute_max_all}
+\alias{impute_max_if}
+\alias{impute_min}
+\alias{impute_min_at}
+\alias{impute_min_all}
+\alias{impute_min_if}
+\alias{impute_median}
+\alias{impute_median_at}
+\alias{impute_median_all}
+\alias{impute_median_if}
+\alias{impute_mean}
+\alias{impute_mean_at}
+\alias{impute_mean_all}
+\alias{impute_mean_if}
+\alias{impute_most_freq}
+\alias{impute_most_freq_at}
+\alias{impute_most_freq_all}
+\alias{impute_most_freq_if}
+\alias{impute_quantile}
+\alias{impute_quantile_at}
+\alias{impute_quantile_all}
+\alias{impute_quantile_if}
+\alias{impute_sample}
+\alias{impute_sample_at}
+\alias{impute_sample_all}
+\alias{impute_sample_if}
+\alias{impute_random}
+\alias{impute_random_at}
+\alias{impute_random_all}
+\alias{impute_random_if}
+\alias{impute_replace}
+\alias{impute_replace_at}
+\alias{impute_replace_all}
+\alias{impute_replace_if}
 \title{Table imputation methods}
 \usage{
 impute_functions(.tbl, .na, .vars, .predicate)
@@ -50,11 +102,11 @@ Function List:
 }
 \examples{
 
-  \dontrun{ 
+ \dontrun{ 
   nacars \%>\% impute_zero() 
   nacars \%>\% impute_zero( mpg, cyl )
   nacars \%>\% impute_zero( "mpg", "cyl" )
   nacars \%>\% impute_zero( c("mpg","cyl") )
   nacars \%>\% impute_zero( 1:2 )
-  }
+ }
 }

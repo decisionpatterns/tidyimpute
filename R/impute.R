@@ -48,7 +48,7 @@
 #' 
 #'   data(nacars)
 #'   
-#'   \dontrun{
+#' \dontrun{
 #'   nacars %>% impute(0, mpg, cyl)
 #'   nacars %>% impute(1:6, mpg, cyl)
 #'
@@ -58,9 +58,11 @@
 #'   nacars %>% impute( mean, mpg, disp )
 #'   nacars %>% impute( mpg=na.mean, cyl=na.max )
 #'   nacars %>% impute( na.mean, c('mpg','disp') )
-#'   }
+#' }
 #' @md
-#' @import dplyr na.tools
+#' @import na.tools
+#' @importFrom rlang eval_tidy quos
+#' @importFrom dplyr select_vars vars
 #' @export
 
 
@@ -121,19 +123,24 @@ impute <- function (.tbl, .na, ...)
 #' 
 #' @examples 
 #' 
+#' \dontrun{
 #'   nacars %>% impute_at( -99, .vars=1:3 )
 #'   nacars %>% impute_at( .na=na.mean, .vars=1:6 )
-#'   nacars %>% impute_at( .na=mean   , .vars=1:6, na.rm = TRUE  )  # Same, uses `...` for additional args
+#'   
+#'   # Same, uses `...` for additional args
+#'   nacars %>%   
+#'     impute_at( .na=mean   , .vars=1:6, na.rm = TRUE  )  
 #'   
 #'   nacars %>% impute_at( .na=na.mean, .vars = c('mpg','cyl', 'disp') )
-#'  
-#' @import rlang
+#' }  
+#' 
+#' @importFrom dplyr select_vars
 #' @rdname impute
 #' @export
 
 impute_at <- function(.tbl, .na, .vars, ... ) { 
 
-  .vars <- select_vars( names(.tbl), .vars )
+  .vars <- dplyr::select_vars( names(.tbl), .vars )
   for( i in .vars ) {
     .tbl[[i]] <- na.replace( x=.tbl[[i]], .na=.na, ... )
   }
@@ -148,9 +155,11 @@ impute_at <- function(.tbl, .na, .vars, ... ) {
 #'  
 #' @examples 
 #' 
+#' \dontrun{
 #'   nacars %>% impute_all( -99 )
 #'   nacars %>% impute_all( na.min )
-#'   
+#' }
+#'    
 #' @rdname impute
 #' @export
 
@@ -161,6 +170,7 @@ impute_all <- function(.tbl, .na, ... ) {
   .tbl
     
 }
+
 
 #' @rdname impute
 #' @export
