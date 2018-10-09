@@ -1,6 +1,10 @@
 ## TODO ##
 
- - [ ] Support autobake
+ - [ ] Add `impute_mode_*` 
+
+ - [x] Add `impute_false_*` and `impute_true_*`
+ 
+ - [ ] Support easybake(TM) "better recipes"
  
  - [ ] Should impute_max / impute_min should not return -Inf and +Inf for all 
        NA rows or be consistent with na.mean and na.median  

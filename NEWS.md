@@ -1,10 +1,11 @@
-## Version 
+## Version 0.2.0 
 
+ - Replace `impute_most_freq*` with `impute_mode*`
  - Add `NA_explicit_` as an exported constant for explicit categorical values.
  - Convert man to use markdown.
- 
+ - Fix exports  
 
-## Version 0.7.3 (2018-01-22) 
+## Version 0.1.1 (2018-01-22) 
  
  - Fix `na_replace` (and `na_explicit`) to add levels for values if
    they do not already exist.

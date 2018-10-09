@@ -47,6 +47,8 @@
 #' @aliases 
 #'  impute_explicit impute_explicit_at impute_explicit_all impute_explicit_if
 #'  impute_zero impute_zero_at impute_zero_all impute_zero_if
+#'  impute_true impute_true_at impute_true_all impute_true_if
+#'  impute_false impute_false_at impute_false_all impute_false_if
 #'  impute_inf impute_inf_at impute_inf_all impute_inf_if
 #'  impute_neginf impute_neginf_at impute_neginf_all impute_neginf_if
 #'  impute_constant impute_constant_at impute_constant_all impute_constant_if
@@ -54,7 +56,8 @@
 #'  impute_min impute_min_at impute_min_all impute_min_if
 #'  impute_median impute_median_at impute_median_all impute_median_if
 #'  impute_mean impute_mean_at impute_mean_all impute_mean_if
-#'  impute_most_freq impute_most_freq_at impute_most_freq_all impute_most_freq_if
+#'  impute_mode impute_mode_at impute_mode_all impute_mode_if
+#   impute_most_freq impute_most_freq_at impute_most_freq_all impute_most_freq_if
 #'  impute_quantile impute_quantile_at impute_quantile_all impute_quantile_if
 #'  impute_sample impute_sample_at impute_sample_all impute_sample_if
 #'  impute_random impute_random_at impute_random_all impute_random_if
@@ -68,6 +71,8 @@ impute_functions <- function( .tbl, .na, .vars, .predicate ) {} # just a stub
 assign_these( make_imputes(na.explicit) )
 
 assign_these( make_imputes(na.zero) ) 
+assign_these( make_imputes(na.true) ) 
+assign_these( make_imputes(na.false) ) 
 assign_these( make_imputes(na.inf) )
 assign_these( make_imputes(na.neginf) )
 assign_these( make_imputes(na.constant) )
@@ -77,7 +82,8 @@ assign_these( make_imputes(na.max) )
 assign_these( make_imputes(na.min) )
 assign_these( make_imputes(na.mean) )
 assign_these( make_imputes(na.median) )
-assign_these( make_imputes(na.most_freq) )
+assign_these( make_imputes(na.mode) )
+# assign_these( make_imputes(na.most_freq) )
 assign_these( make_imputes(na.quantile) )
 
 assign_these( make_imputes(na.sample) )
