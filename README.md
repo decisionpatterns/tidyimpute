@@ -1,6 +1,13 @@
 
 ## tidyimpute  <img src="man/figures/hexagon_blue_tidyimpute_v1.0.png"  width="120px" align="right">
 
+![](https://img.shields.io/cran/v/tidyimpute.svg) <!-- Version --> 
+![](https://img.shields.io/cran/l/tidyimpute.svg) <!-- License --> 
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Downloads](https://cranlogs.r-pkg.org/badges/tidyimpute?color=brightgreen)](https://www.r-pkg.org/pkg/tidyimpute)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/tidyimpute)](https://cran.rstudio.com/web/packages/tidyimpute/index.html)
+<!-- [![Research software impact](http://depsy.org/api/package/cran/tidyimpute/badge.svg)](http://depsy.org/package/r/tidyimpute) -->
+
 **Impute the tidyverse way** 
 
 [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%203%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-3.0.html)
