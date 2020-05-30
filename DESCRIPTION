@@ -1,7 +1,7 @@
 Package: tidyimpute
 Title: Impute the Tidyverse Way
-Version: 0.2.0
-Date: 2018-03-30
+Version: 0.2.1
+Date: 2020-05-30
 Authors@R: c(
     person("Christopher", "Brown", , "chris.brown@decisionpatterns.com", c("aut", "cre") ),
     person("Decision Patterns", role = "cph")
@@ -16,9 +16,10 @@ Depends:
     R (>= 3.1.0)
 Imports:
     methods,
+    tidyselect (>= 1.1.0),
     dplyr (>= 0.7.2),
     rlang (>= 0.1.2),
-    na.tools (>= 0.1.0)
+    na.tools (>= 0.3.3)
 Suggests:
     testthat (>= 1.0.2),
     data.table (>= 1.10),
@@ -26,7 +27,7 @@ Suggests:
     magrittr
 License: GPL-3 | file LICENSE
 LazyData: true
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
 Repository: CRAN 
 Encoding: UTF-8

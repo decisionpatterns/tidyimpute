@@ -1,3 +1,7 @@
+## Version 0.2.1 (2020-05-30)
+ - Dependency on na.tools v0.3.3
+ - Fix tests
+
 ## Version 0.2.0 
 
  - Replace `impute_most_freq*` with `impute_mode*`

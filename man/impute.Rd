@@ -51,7 +51,7 @@ in \strong{ALL COLS} by \code{.na}.  This is analogous to \code{impute_all}.
 column(s) specified in \code{...} by \code{.na}.  Columns are specified as an
 unnamed list of quoted or unquoted column names. This is analogous to
 \code{impute_at} where \code{...} specifies \code{.vars}
-\item \code{impute( .tbl. col1=na.*, col2=na.* )} : ( missing \code{.na} ) :
+\item \verb{impute( .tbl. col1=na.*, col2=na.* )} : ( missing \code{.na} ) :
 Replace by column-specific \code{.na}
 }
 
@@ -63,7 +63,7 @@ for additional arguments to \code{.na}
 }
 \note{
 \code{...} is used to specify columns in \code{impute} but is used as additional
-arguments to \code{.na} in the other \code{impute_*} functions.
+arguments to \code{.na} in the other \verb{impute_*} functions.
 }
 \examples{
 

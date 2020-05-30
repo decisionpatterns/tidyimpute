@@ -62,7 +62,8 @@
 #' @md
 #' @import na.tools
 #' @importFrom rlang eval_tidy quos
-#' @importFrom dplyr select_vars vars
+#' @importFrom dplyr vars
+#' @importFrom tidyselect vars_select
 #' @export
 
 
@@ -95,7 +96,7 @@ impute <- function (.tbl, .na, ...)
   # USAGE 2: ... is column names
   # IF names were provided as part of columns list, we take
   if( ! missing(.na) && is_unnamed.quosure( quos(...) ) ) { 
-    vars <- select_vars( names(.tbl), ... )  
+    vars <- vars_select( names(.tbl), ... )  
     for( j in vars )
       .tbl[[j]] <- na.replace( .tbl[[j]], .na ) 
     return(.tbl)
@@ -134,13 +135,13 @@ impute <- function (.tbl, .na, ...)
 #'   nacars %>% impute_at( .na=na.mean, .vars = c('mpg','cyl', 'disp') )
 #' }  
 #' 
-#' @importFrom dplyr select_vars
+#' @importFrom tidyselect vars_select
 #' @rdname impute
 #' @export
 
 impute_at <- function(.tbl, .na, .vars, ... ) { 
 
-  .vars <- dplyr::select_vars( names(.tbl), .vars )
+  .vars <- vars_select( names(.tbl), .vars )
   for( i in .vars ) {
     .tbl[[i]] <- na.replace( x=.tbl[[i]], .na=.na, ... )
   }

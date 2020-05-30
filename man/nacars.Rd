@@ -7,7 +7,9 @@
 \alias{nairis}
 \alias{nairis_dt}
 \title{data with missing values}
-\format{An object of class \code{data.frame} with 6 rows and 11 columns.}
+\format{
+An object of class \code{data.frame} with 6 rows and 11 columns.
+}
 \usage{
 nacars
 }

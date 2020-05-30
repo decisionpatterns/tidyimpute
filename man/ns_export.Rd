@@ -18,16 +18,16 @@ ns_export_function_list(x)
 Export functions in list
 }
 \details{
-This uses the \code{@evalNamespace} directive to declare exports for objects by
+This uses the \verb{@evalNamespace} directive to declare exports for objects by
 name or when provided in a function.
 
 ns_export <- function(nms) {
-sprintf("export(%s)", paste(nms, collapse = ","))
+sprintf("export(\%s)", paste(nms, collapse = ","))
 }
 
 ns_export_named <-function(x) {
 nms <- names(x)
-sprintf("export(%s)", paste(nms, collapse = ","))
+sprintf("export(\%s)", paste(nms, collapse = ","))
 }
 
 #' @evalNamespace ns_export(names(fns))
