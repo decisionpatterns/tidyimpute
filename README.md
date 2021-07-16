@@ -27,7 +27,7 @@ for working with missing values in vectors.
    * `impute_*` family of functions for table- or list-based imputations.
    * `impute_*_at`, `impute_*_all` and `impute_*_if` functions 
  * Uses the **na.tools* package to ensure
-   * Type/class and length-safe replacement. (**tidyimport** will never change 
+   * Type/class and length-safe replacement. (**tidyimpute** will never change 
      produce an object with a different length/nrow or type/class of its target.)
  * General imputation methods
    * Generic imputation: `impute`, `impute_at`, `impute_all`, `impute_if`
@@ -57,7 +57,7 @@ for working with missing values in vectors.
 ### Github (Development Version)
 
     library(devtools)
-    install_github( "decisionpatterns/tidyimport")
+    install_github( "decisionpatterns/tidyimpute")
     
     
 ### CRAN 
